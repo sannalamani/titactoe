@@ -1,0 +1,29 @@
+#grid {
+    
+    width: 50%;
+    margin: 2rem auto;
+    border: 1px solid lightgrey;
+    display: grid;
+    grid-template: 100px 1fr / 50px 1fr;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 3px;
+  
+  height:max-content;
+  
+  background-color: #eee;
+  
+}
+
+#grid .cell {
+    text-align: center;
+    padding: 50px 0;
+    background-color: #fff;
+  border: 1px solid #ccc;
+}
+
+#grid .cell:hover{
+
+    background-color: bisque;
+    cursor: pointer;
+}

@@ -1,0 +1,28 @@
+@import "msg.css";
+@import "players.css";
+@import "grid.css";
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none ;
+}
+
+body{
+
+    background-color: beige;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+main{
+
+    width: 70%;
+    margin: auto;
+
+}
+
+footer{
+
+    font-size: 0.5rem;
+    text-align: center;
+}

@@ -2,6 +2,7 @@
 let cellsEL = document.querySelectorAll('.cell');
 let msgEL = document.querySelector('#msg');
 let playerEL = document.querySelectorAll('.score');
+const resetEL = document.getElementById('resetLink');
 
 let playerSign=['X','O'];
 let currentPlayer = 0;
@@ -39,6 +40,13 @@ function verifyDraw(){
         draw_count=0;
 }
 
+function reset(){
+    console.log('inisde reset');
+    localStorage.setItem('player1Score',0);
+    localStorage.setItem('player2Score',0);
+    player_sc=[0,0];
+}
+
 //function to check the winner if possible by rows columns and diagonals
 function verifyWin(){
     const winningPositions = [    // Rows    
@@ -61,6 +69,8 @@ function verifyWin(){
            winner = currentPlayer+1;
            win=true;
            player_sc[currentPlayer]++;
+           localStorage.setItem('player1Score', player_sc[0]);
+           localStorage.setItem('player2Score', player_sc[1]);
         }
       }   
 }
@@ -80,6 +90,31 @@ function playAgain(){
 
 showMsg('Start : Player 1 turn');
 
+if (localStorage.getItem('player1Score') !== null) {
+    player_sc[0] = parseInt(localStorage.getItem('player1Score'));
+  }
+  
+  if (localStorage.getItem('player2Score') !== null) {
+     player_sc[1] = parseInt(localStorage.getItem('player2Score'));
+  }
+
+  function showScore(){
+         // Retrieve player 1's score from local storage
+         const storedPlayer1Score = localStorage.getItem('player1Score');
+  
+         // Retrieve player 2's score from local storage
+         const storedPlayer2Score = localStorage.getItem('player2Score');
+
+         playerEL[0].innerHTML=storedPlayer1Score;
+         playerEL[1].innerHTML=storedPlayer2Score;
+  }
+  
+resetEL.addEventListener('click',function(event){
+        reset();
+        showScore();
+});
+
+showScore();
 //event listener to wait for click and run the win and draw conditions after each user's turn(click)
 cellsEL.forEach(cellsEL => {
     cellsEL.addEventListener('click',function(event){
@@ -98,9 +133,8 @@ cellsEL.forEach(cellsEL => {
             
             if(win){
                 showMsg('Player '+winner+': Won <a href="#" onclick="playAgain()"> play again </a>');
-                playerEL[currentPlayer].innerHTML=player_sc[currentPlayer];
+                showScore();
             }
-
             currentPlayer = currentPlayer === 1 ? 0 : 1;
             
         } else{

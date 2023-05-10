@@ -8,14 +8,15 @@
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   gap: 3px;
-  
-  height:max-content;
-  
+  height: max-content;
   background-color: #eee;
   
 }
 
 #grid .cell {
+    font-size: 30px;
+    font-family:monospace;
+    color: rebeccapurple;
     text-align: center;
     padding: 50px 0;
     background-color: #fff;

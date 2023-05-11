@@ -112,6 +112,7 @@ if (localStorage.getItem('player1Score') !== null) {
 resetEL.addEventListener('click',function(event){
         reset();
         showScore();
+        playAgain();
 });
 
 showScore();

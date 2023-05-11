@@ -47,6 +47,8 @@ function reset(){
     player_sc=[0,0];
 }
 
+
+
 //function to check the winner if possible by rows columns and diagonals
 function verifyWin(){
     const winningPositions = [    // Rows    
@@ -66,6 +68,9 @@ function verifyWin(){
         const [a, b, c] = winningPositions[i];
         if (cellsEL[a].innerHTML && cellsEL[a].innerHTML === cellsEL[b].innerHTML && cellsEL[a].innerHTML === cellsEL[c].innerHTML) {
             
+            cellsEL[a].style.background="yellow";
+            cellsEL[b].style.background="yellow";
+            cellsEL[c].style.background="yellow";
            winner = currentPlayer+1;
            win=true;
            player_sc[currentPlayer]++;
@@ -83,6 +88,7 @@ function playAgain(){
      win=false;
      cellsEL.forEach(cellsEL=>{
         cellsEL.innerHTML='';
+        cellsEL.style.background="white";
      });
      showMsg('Start : Player 1 turn');
      
